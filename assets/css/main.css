@@ -8,7 +8,7 @@
     --gray       : #5D6979;
     --light-gray : #e8e8e8;
     --orange     : #D47621;
-    --dark-orange: #CF7016;
+    --dark-orange: #b75f0c;
     --white      : #F4F5F9;
     --light-white: #D3D8E2;
 }
@@ -111,7 +111,7 @@ body {
     display       : flex;
     flex          : 1;
     flex-direction: column;
-    margin-bottom : 1rem;
+    margin-bottom : 2rem;
     width         : 100%;
 }
 
