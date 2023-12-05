@@ -59,16 +59,18 @@ body {
     align-items: center;
     display    : flex;
     gap        : 0.4rem;
+    position   : relative;
 }
 
 .mode-check input {
     appearance      : none;
-    background-color: var(--light-white);
+    background-color: var(--black);
     border-radius   : 1.875rem;
     cursor          : pointer;
     height          : 30px;
     padding         : 1rem;
     position        : relative;
+    transition      : all .2s ease-in-out;
     width           : 60px;
 }
 
@@ -88,6 +90,20 @@ body {
 .mode-check input:checked::before {
     background-color: var(--light-black);
     left            : 2rem;
+}
+
+.mode-check input:checked {
+    background-color: var(--light-white);
+}
+
+.toggle-label {
+    background-color: var(--white);
+    border-radius   : 1.875rem;
+    cursor          : pointer;
+    height          : 30px;
+    position        : absolute;
+    transition      : background-color 0.4s ease;
+    width           : 60px;
 }
 
 .input-container {
@@ -138,12 +154,69 @@ body {
 
 .row button {
     border       : none;
-    border-radius: 20px;
+    border-radius: 22px;
+    color        : #333;
     cursor       : pointer;
     flex         : 0 1 60px;
+    font-size    : 1.125rem;
     height       : 60px;
+    transition   : all 250ms ease-in-out;
+    text-align   : center;
+}
+
+.row button:hover {
+    background: var(--light-gray);
+}
+
+.row button:active {
+    transform: scaleY(1.1);
 }
 
 .row #zero {
     flex-grow: 4;
+}
+
+.row button.orange {
+    background-color: var(--orange);
+    color           : var(--white);
+    font-size       : 1.125rem;
+    font-weight     : 200;
+}
+
+.row button.orange:hover {
+    background-color: var(--dark-orange);
+}
+
+/* light mode */
+.light-mode {
+    background-color: var(--white);
+}
+
+.light-mode button {
+    background: var(--white);
+    box-shadow: 6px 6px 16px #bebebe,
+        -6px -6px 16px #ffffff9a;
+}
+
+.light-mode button:hover {
+    background: var(--light-gray);
+}
+
+/* dark mode */
+.dark-mode {
+    background-color: var(--black);
+    color           : var(--white);
+}
+
+.dark-mode input {
+    color: var(--white);
+}
+
+.dark-mode button {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode button:not(button.orange) {
+    background-color: var(--gray);
+    color           : var(--white);
 }
