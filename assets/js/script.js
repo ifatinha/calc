@@ -1,4 +1,4 @@
-const main = document.querySelector(".main");
+const calc = document.querySelector(".calc");
 const root = document.querySelector(":root");
 const input = document.querySelector("#input");
 const result = document.querySelector("#result");
@@ -7,10 +7,16 @@ const allowedKeys = ["0", ".", "1", "2", "3", "+", "4", "5",
 const charKeyBtns = document.querySelectorAll(".key");
 const clearBtn = document.querySelector("#clear");
 const eqaulsBtn = document.querySelector("#equals");
+const themeSwitcherBtn = document.querySelector("#themeSwitcher");
+const copyBtn = document.querySelector("#copyToClipboard");
 
 function calculate() {
-    const temp = eval(input.value);
-    result.innerText = temp;
+
+    result.innerText = "ERRO";
+    result.classList.add("danger");
+
+    result.innerText = eval(input.value);
+    result.classList.remove("danger");
 }
 
 function keyboard(ev) {
@@ -38,6 +44,33 @@ function getValueKey(ev) {
 function clearInput() {
     input.value = "";
     input.focus();
+    result.innerText = "";
+}
+
+function switchTheme(ev) {
+    const checkBtn = ev.currentTarget;
+    if (checkBtn.checked) {
+        calc.classList.remove("light-mode");
+        calc.classList.add("dark-mode");
+        calc.dataset.theme = "dark";
+    } else {
+        calc.classList.remove("dark-mode");
+        calc.classList.add("light-mode");
+        calc.dataset.theme = "light";
+    }
+}
+
+function copyToClipboard(ev) {
+    const button = ev.currentTarget;
+
+    if (button.innerText.toLowerCase() === "copy") {
+        button.innerText = "copied";
+        button.classList.add("success");
+        navigator.clipboard.writeText(result.innerText);
+    } else {
+        button.innerText = "copy";
+        button.classList.remove("success");
+    }
 }
 
 function initialize() {
@@ -49,6 +82,8 @@ function initialize() {
 
     clearBtn.addEventListener("click", clearInput);
     eqaulsBtn.addEventListener("click", calculate);
+    themeSwitcherBtn.addEventListener("click", switchTheme);
+    copyBtn.addEventListener("click", copyToClipboard);
 }
 
 (function () {

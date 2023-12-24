@@ -5,10 +5,12 @@
 :root {
     --black      : #303A44;
     --light-black: #353F49;
+    --green      : #00b300;
     --gray       : #5D6979;
     --light-gray : #e8e8e8;
     --orange     : #D47621;
     --dark-orange: #b75f0c;
+    --red        : #cc0000;
     --white      : #F4F5F9;
     --light-white: #D3D8E2;
 }
@@ -22,6 +24,14 @@ body {
 body {
     font-family   : 'Poppins', sans-serif;
     /* font-family: 'Raleway', sans-serif; */
+}
+
+.success {
+    background-color: var(--green) !important;
+}
+
+.danger {
+    color: var(--red) !important;
 }
 
 .main {
@@ -116,21 +126,22 @@ body {
 }
 
 .cache {
-    color           : var(--light-black);
-    font-size       : 1.5rem;
-    font-weight     : 300;
-    /* margin-bottom: 1rem; */
-    text-align      : right;
-    width           : 100%;
+    color        : var(--light-black);
+    font-size    : 1.5rem;
+    font-weight  : 300;
+    min-height   : 40px;
+    margin-bottom: .25rem;
+    padding      : 0 0.625rem;
+    text-align   : right;
+    width        : 100%;
 }
 
 .input {
     background         : transparent;
     border             : 1px solid transparent;
     border-bottom-color: var(--black);
-    font-family        : 'Raleway', sans-serif;
-    font-size          : 3.25rem;
-    font-weight        : 200 !important;
+    font-family        : 'Poppins', sans-serif;
+    font-size          : 1.375rem;
     padding            : 0.4rem 0.625rem;
     outline            : none;
     text-align         : right;
@@ -200,6 +211,10 @@ body {
 
 .light-mode .charKey:hover {
     background: var(--light-gray);
+}
+
+.light-mode .success {
+    color: var(--white);
 }
 
 /* dark mode */
