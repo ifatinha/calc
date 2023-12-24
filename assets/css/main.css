@@ -20,8 +20,8 @@ body {
 }
 
 body {
-    /* font-family: 'Poppins', sans-serif; */
-    font-family: 'Raleway', sans-serif;
+    font-family   : 'Poppins', sans-serif;
+    /* font-family: 'Raleway', sans-serif; */
 }
 
 .main {
@@ -40,7 +40,7 @@ body {
     display         : flex;
     flex-direction  : column;
     justify-content : space-between;
-    max-width       : 280px;
+    max-width       : 320px;
     padding         : 1rem 0.75rem;
     width           : 100%;
 }
@@ -116,9 +116,9 @@ body {
 }
 
 .cache {
-    color           : var(--light-gray);
+    color           : var(--light-black);
     font-size       : 1.5rem;
-    font-weight     : 200;
+    font-weight     : 300;
     /* margin-bottom: 1rem; */
     text-align      : right;
     width           : 100%;
@@ -131,7 +131,7 @@ body {
     font-family        : 'Raleway', sans-serif;
     font-size          : 3.25rem;
     font-weight        : 200 !important;
-    /* padding         : 2rem 2%; */
+    padding            : 0.4rem 0.625rem;
     outline            : none;
     text-align         : right;
     width              : 100%;
@@ -152,38 +152,38 @@ body {
     width  : 100%;
 }
 
-.row button {
+.row .charKey {
     border       : none;
-    border-radius: 22px;
+    border-radius: 4px;
     color        : #333;
     cursor       : pointer;
-    flex         : 0 1 60px;
+    flex         : 1 1 60px;
     font-size    : 1.125rem;
-    height       : 60px;
+    height       : 50px;
     transition   : all 250ms ease-in-out;
     text-align   : center;
 }
 
-.row button:hover {
+.row .charKey:hover {
     background: var(--light-gray);
 }
 
-.row button:active {
-    transform: scaleY(1.1);
+.row .charKey:active {
+    transform: translateY(2px);
 }
 
 .row #zero {
-    flex-grow: 4;
+    flex-grow: 10;
 }
 
-.row button.orange {
+.row button.charKey.orange {
     background-color: var(--orange);
     color           : var(--white);
     font-size       : 1.125rem;
     font-weight     : 200;
 }
 
-.row button.orange:hover {
+.row button.charKey.orange:hover {
     background-color: var(--dark-orange);
 }
 
@@ -192,13 +192,13 @@ body {
     background-color: var(--white);
 }
 
-.light-mode button {
+.light-mode .charKey {
     background: var(--white);
     box-shadow: 6px 6px 16px #bebebe,
         -6px -6px 16px #ffffff9a;
 }
 
-.light-mode button:hover {
+.light-mode .charKey:hover {
     background: var(--light-gray);
 }
 
@@ -209,14 +209,19 @@ body {
 }
 
 .dark-mode input {
+    border: 1px solid var(--light-white);
+    color : var(--white);
+}
+
+.dark-mode .cache {
     color: var(--white);
 }
 
-.dark-mode button {
+.dark-mode .charKey {
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.dark-mode button:not(button.orange) {
+.dark-mode .charKey:not(button.charKey.orange) {
     background-color: var(--gray);
     color           : var(--white);
 }
