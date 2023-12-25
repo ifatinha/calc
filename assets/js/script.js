@@ -3,24 +3,37 @@ const root = document.querySelector(":root");
 const input = document.querySelector("#input");
 const result = document.querySelector("#result");
 const allowedKeys = ["0", ".", "1", "2", "3", "+", "4", "5",
-    "6", "-", "7", "8", "9", "*", "(", ")", "/", " % "];
+    "6", "-", "7", "8", "9", "*", "(", ")", "/"];
 const charKeyBtns = document.querySelectorAll(".key");
 const clearBtn = document.querySelector("#clear");
 const eqaulsBtn = document.querySelector("#equals");
 const themeSwitcherBtn = document.querySelector("#themeSwitcher");
 const copyBtn = document.querySelector("#copyToClipboard");
+const sqrtBtn = document.querySelector("#sqrt");
+const percentBtn = document.querySelector("#percent");
 
 function calculate() {
 
     result.innerText = "ERRO";
     result.classList.add("danger");
 
-    result.innerText = eval(input.value);
-    result.classList.remove("danger");
+    if (input.value.search("mod") !== -1) {
+        const inputValue = input.value;
+        const stringArr = inputValue.split(" ");
+        if (stringArr.length === 3) {
+            const temp = parseInt(stringArr[0]) % parseInt(stringArr[stringArr.length - 1]);
+            result.innerText = temp;
+            result.classList.remove("danger");
+        }
+    } else {
+        result.innerText = eval(input.value);
+        result.classList.remove("danger");
+    }
 }
 
 function keyboard(ev) {
     ev.preventDefault();
+    console.log(ev.key);
 
     if (allowedKeys.includes(ev.key)) {
         input.value += ev.key;
@@ -73,6 +86,16 @@ function copyToClipboard(ev) {
     }
 }
 
+function calculatePercentage() {
+    result.innerText = "ERRO";
+    result.classList.add("danger");
+
+    if (input.value.match(/^[0-9]/) !== null) {
+        result.innerText = (parseInt(input.value) / 100);
+        result.classList.remove("danger");
+    }
+}
+
 function initialize() {
     input.addEventListener("keydown", keyboard);
 
@@ -84,6 +107,10 @@ function initialize() {
     eqaulsBtn.addEventListener("click", calculate);
     themeSwitcherBtn.addEventListener("click", switchTheme);
     copyBtn.addEventListener("click", copyToClipboard);
+    sqrtBtn.addEventListener("click", () => {
+        result.innerText = Math.sqrt(parseInt(input.value));
+    });
+    percentBtn.addEventListener("click", calculatePercentage);
 }
 
 (function () {
