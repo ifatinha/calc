@@ -1,4 +1,5 @@
-const calc = document.querySelector(".calc");
+import { switchTheme } from "./modules/theme.js";
+
 const root = document.querySelector(":root");
 const input = document.querySelector("#input");
 const result = document.querySelector("#result");
@@ -33,7 +34,6 @@ function calculate() {
 
 function keyboard(ev) {
     ev.preventDefault();
-    console.log(ev.key);
 
     if (allowedKeys.includes(ev.key)) {
         input.value += ev.key;
@@ -58,19 +58,6 @@ function clearInput() {
     input.value = "";
     input.focus();
     result.innerText = "";
-}
-
-function switchTheme(ev) {
-    const checkBtn = ev.currentTarget;
-    if (checkBtn.checked) {
-        calc.classList.remove("light-mode");
-        calc.classList.add("dark-mode");
-        calc.dataset.theme = "dark";
-    } else {
-        calc.classList.remove("dark-mode");
-        calc.classList.add("light-mode");
-        calc.dataset.theme = "light";
-    }
 }
 
 function copyToClipboard(ev) {
