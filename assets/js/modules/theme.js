@@ -1,6 +1,6 @@
-const calc = document.querySelector(".calc");
-
 export function switchTheme(ev) {
+   const calc = document.querySelector(".calc");
+   const root = document.querySelector(":root");
    const checkBtn = ev.currentTarget;
 
    if (checkBtn.checked) {
@@ -12,5 +12,5 @@ export function switchTheme(ev) {
       calc.classList.add("light-mode");
       calc.dataset.theme = "light";
    }
-   
+
 }
